@@ -1,0 +1,36 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <table>
+        <tr>
+            <td>Title: <input type="text" formControlName="title"></td>
+        </tr>
+        <tr>
+            <input type="file" #toUpload>
+        </tr>
+        <tr>
+            <td>Description: <input type="text" formControlName="description"></td>
+        </tr>
+        <!-- <button type="button" (click)="addTags()">+</button> -->
+        
+    </table>
+    <table>
+        <thead>
+            <tr>
+                <th>Tags</th>
+                <button type="button" (click)="addTags()">+</button>
+            </tr>
+        </thead>
+        <tbody formArrayName="tags">
+            <tr *ngFor="let li of tagsArray.controls; let idx=index" [formGroupName]="idx">
+                <td>
+                    <input type="text" formControlName="tag">
+                </td>
+                
+                <button (click)="removeLineItem(idx)">x</button>
+
+            </tr>
+        </tbody>
+        <button type="submit"[disabled]=invalid()>Submit</button>
+    </table>
+
+
+</form>

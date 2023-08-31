@@ -1,0 +1,33 @@
+<div *ngIf="time">
+    <button type="button" (click)=load()>load</button>
+    
+</div>
+<button type="button" [routerLink]="['/post']">Post News</button>
+<button type="button" [routerLink]="''">Back</button>
+<div>
+
+    <div *ngIf="news">
+        <div *ngFor="let new of news">
+            <table>
+                <tr>
+                    <td>
+                        Title: {{new.title}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>Publish:{{new.postDate}}</td>
+                </tr>
+                <tr>
+                    <img src= "https://xinlitan98.sgp1.digitaloceanspaces.com/image/{{new.image}}" width="500px">
+                </tr>
+                <tr>
+                    <td>
+                        Description:{{new.description}}
+                    </td>
+                </tr>
+                <tr *ngFor="let tag of new.tags">
+                    {{tag}}
+                </tr>
+            </table>
+        </div>
+    </div>

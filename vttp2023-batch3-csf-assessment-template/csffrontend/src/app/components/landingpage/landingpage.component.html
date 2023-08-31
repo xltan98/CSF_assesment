@@ -1,0 +1,27 @@
+<form [formGroup]="form">
+    <table>
+        <tr>
+            <td>Time:</td>
+            <td>
+                <select formControlName="time">
+                    <option value="5">5</option>
+                <option value="15">15</option>
+                <option value="30">30</option>
+                <option value="45">45</option>
+                <option value="60">60</option>
+                </select>
+            </td>
+        </tr>
+    </table>
+</form>
+<button type="button" [routerLink]="['/post']">Post News</button>
+<h1>Top Tags</h1>
+<div *ngIf="tcs; else notag">
+    <div *ngFor="let t of tcs">
+        <a [routerLink]="['/time',t.tag]">{{t.tag}}    {{t.count}}</a>
+    </div>
+</div>
+
+<ng-template #notag>
+    <h3>No recent tags currently</h3>
+</ng-template>
